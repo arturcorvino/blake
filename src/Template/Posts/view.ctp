@@ -1,5 +1,7 @@
 <?php $this->assign('title', $data->title); ?>
 <?php $this->assign('subtitle', $data->subtitle); ?>
+<?php $this->assign('user', $data->user->user); ?>
+<?php $this->assign('userName', $data->user->name); ?>
 
 <article>
     <div class="container">
