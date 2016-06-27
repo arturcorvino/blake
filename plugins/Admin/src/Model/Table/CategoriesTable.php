@@ -1,0 +1,71 @@
+<?php
+namespace Admin\Model\Table;
+
+use Admin\Model\Entity\Category;
+use Cake\ORM\Query;
+use Cake\ORM\RulesChecker;
+use Cake\ORM\Table;
+use Cake\Validation\Validator;
+
+/**
+ * Categories Model
+ *
+ * @property \Cake\ORM\Association\BelongsToMany $Posts
+ */
+class CategoriesTable extends Table
+{
+
+    /**
+     * Initialize method
+     *
+     * @param array $config The configuration for the Table.
+     * @return void
+     */
+    public function initialize(array $config)
+    {
+        parent::initialize($config);
+
+        $this->table('categories');
+        $this->displayField('title');
+        $this->primaryKey('id');
+
+        $this->addBehavior('Timestamp');
+
+        $this->belongsToMany('Posts', [
+            'foreignKey' => 'category_id',
+            'targetForeignKey' => 'post_id',
+            'joinTable' => 'posts_categories',
+            'className' => 'Admin.Posts'
+        ]);
+    }
+
+    /**
+     * Default validation rules.
+     *
+     * @param \Cake\Validation\Validator $validator Validator instance.
+     * @return \Cake\Validation\Validator
+     */
+    public function validationDefault(Validator $validator)
+    {
+        $validator
+            ->integer('id')
+            ->allowEmpty('id', 'create');
+
+        $validator
+            ->requirePresence('title', 'create')
+            ->notEmpty('title');
+
+        $validator
+            ->allowEmpty('subtitle');
+
+        $validator
+            ->allowEmpty('image');
+
+        $validator
+            ->integer('enabled')
+            ->requirePresence('enabled', 'create')
+            ->notEmpty('enabled');
+
+        return $validator;
+    }
+}

@@ -16,8 +16,28 @@ class UsersController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
+    public function login()
+    {
+        $this->viewBuilder()->layout('Admin.login');
+    }
+
+    /**
+     * Index method
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function logout()
+    {
+    }
+
+    /**
+     * Index method
+     *
+     * @return \Cake\Network\Response|null
+     */
     public function index()
     {
+        $this->viewBuilder()->layout('Admin.default');
     }
 
     /**

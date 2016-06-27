@@ -57,42 +57,6 @@ class PostsTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
-        $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
-
-        $validator
-            ->requirePresence('title', 'create')
-            ->notEmpty('title');
-
-        $validator
-            ->allowEmpty('subtitle');
-
-        $validator
-            ->requirePresence('post', 'create')
-            ->notEmpty('post');
-
-        $validator
-            ->allowEmpty('image');
-
-        $validator
-            ->integer('status')
-            ->requirePresence('status', 'create')
-            ->notEmpty('status');
-
-        $validator
-            ->integer('enabled')
-            ->requirePresence('enabled', 'create')
-            ->notEmpty('enabled');
-
-        $validator
-            ->dateTime('begin_at')
-            ->allowEmpty('begin_at');
-
-        $validator
-            ->dateTime('expire_at')
-            ->allowEmpty('expire_at');
-
         return $validator;
     }
 
@@ -105,7 +69,6 @@ class PostsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['user_id'], 'Users'));
         return $rules;
     }
 }

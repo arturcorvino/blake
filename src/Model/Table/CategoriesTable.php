@@ -46,25 +46,6 @@ class CategoriesTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
-        $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
-
-        $validator
-            ->requirePresence('title', 'create')
-            ->notEmpty('title');
-
-        $validator
-            ->allowEmpty('subtitle');
-
-        $validator
-            ->allowEmpty('image');
-
-        $validator
-            ->integer('enabled')
-            ->requirePresence('enabled', 'create')
-            ->notEmpty('enabled');
-
         return $validator;
     }
 }

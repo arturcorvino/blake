@@ -39,22 +39,6 @@ class FilesTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
-        $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
-
-        $validator
-            ->requirePresence('file', 'create')
-            ->notEmpty('file');
-
-        $validator
-            ->allowEmpty('description');
-
-        $validator
-            ->integer('enabled')
-            ->requirePresence('enabled', 'create')
-            ->notEmpty('enabled');
-
         return $validator;
     }
 }
