@@ -35,21 +35,18 @@
 
     <?= $this->Html->meta('favicon.ico', '/favicon.ico', ['type' => 'icon']); ?>
 </head>
-<!-- END HEAD -->
 
-<!-- BEGIN BODY -->
 <body class="hold-transition skin-blue sidebar-mini">
 
     <div class="wrapper">
-        <?= $this->element('header'); ?>
-        <?= $this->element('menu'); ?>
+        <?= $this->element('Admin.header'); ?>
+        <?= $this->element('Admin.menu'); ?>
 
-        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <?= $this->fetch('content'); ?>
+            <?= $this->fetch('Admin.content'); ?>
         </div>
-        <?= $this->element('footer'); ?>
-        <?= $this->element('config'); ?>
+        <?= $this->element('Admin.footer'); ?>
+        <?php /* $this->element('Admin.config'); */ ?>
     </div>
 
     <?= $this->Html->script([
@@ -77,7 +74,7 @@
     <?= $this->fetch('script'); ?>
 
     <script>
-      $.widget.bridge('uibutton', $.ui.button);
+        $.widget.bridge('uibutton', $.ui.button);
     </script>
 
 </body>
